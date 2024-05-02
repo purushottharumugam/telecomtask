@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Information</title>
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
+</head>
+<body>
+
+<h1>Customer Information</h1>
+
+<button id="add-customer-btn">Add Customer</button><br><br>
+
+<table id="customer-table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Date of Birth</th>
+            <th>Email</th>
+            <th>Aadhar Number</th>
+            <th>Assigned Mobile Number</th>
+            <th>Current Plan</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for customer in customers %}
+        <tr>
+            <td>{{ customer.id }}</td>
+            <td>{{ customer.name }}</td>
+            <td>{{ customer.dob }}</td>
+            <td>{{ customer.email }}</td>
+            <td>{{ customer.adhar_number }}</td>
+            <td>{{ customer.assigned_mobile_number }}</td>
+            <td>{{ customer.plan }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<!-- DataTables JavaScript -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+
+<script>
+$(document).ready(function() {
+    $('#customer-table').DataTable();
+
+    $('#add-customer-btn').click(function() {
+        window.location.href = '/customers/create/';
+    });
+    $('#customer-table tbody').on('click', 'tr', function () {
+        var rowData = $('#customer-table ').DataTable().row(this).data();
+        window.location.href = '/customers/' + rowData[0];
+    });
+});
+</script>
+
+</body>
+</html>

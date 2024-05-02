@@ -1,0 +1,17 @@
+version: "3.7"
+services:
+  app:
+    build:
+      context: .
+    expose:
+      - "8000"
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+  cache:
+    image: redis
+    expose:
+      - "6379"
+    ports:
+      - "6379:6379"

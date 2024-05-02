@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Details</title>
+</head>
+<body>
+
+<h1>Customer Details</h1>
+
+<div>
+    <strong>Name:</strong> {{ customer.name }}<br>
+    <strong>DOB:</strong> {{ customer.dob }}<br>
+    <strong>Plan:</strong> {{ customer.plan.name }}<br>
+    <strong>Plan Cost</strong> {{ customer.plan.price }}<br>
+    <strong>Validity:</strong> {{ customer.plan.validity_days }}<br>
+    <strong>Status:</strong> {{ customer.plan.status }}<br>
+    <strong>Adhaar_number:</strong> {{ customer.adhar_number }}<br>
+</div>
+<br>
+<button onclick="window.location.href = '/customers/'">Go Back</button>
+<button onclick="window.location.href = '/renew/{{customer.id}}'">Renew Plan</button>
+
+</body>
+
+</html>
